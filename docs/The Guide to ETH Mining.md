@@ -107,6 +107,40 @@ Using puttygen.exe
 
 **Adding The Public Key to the Server**
 
+Copy the public key string into the file below and then save/close the the file.
+
+```
+mkdir -p ~/.ssh
+sudo nano ~/.ssh/authorized_keys
+```
+
+Then update the permissions of the file to allow SSH to work.
+
+```
+sudo chmod 0600 ~/.ssh/authorized_keys
+```
+
+**Test it**
+
+At this point, you should be able to authenticate to your server using the private key.  Check it is working.
+
+**Disable Password Authentication**
+
+The final step is to secure your server even further by disabling the text password log in.  This is to ensure that only people with the private key can log into the server.  Password security is good, but certainly not as secure as keys.
+
+```
+sudo nano /etc/ssh/sshd_config
+```
+
+Locate the following lines and change them to the below:
+
+```
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+```
+
+
+
 
 
 
