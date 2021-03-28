@@ -22,7 +22,16 @@ Follow all the default steps for the installation.  There is nothing special tha
 You will want to get a number of different software packages installed to get up and running.  These are listed below.
 
 ```
+sudo apt update
 sudo apt install gcc make openssh-server openssh-client
+```
+
+You need the gcc and make tool so that you can build and install the GPU drivers later.  The OpenSSH Server will allow remote access to your mining rig(s).  The client will allow you to connect to other rigs as well.
+
+It would be worth while to update your Ubuntu as well at this stage to ensure you have the latest software.
+
+```
+sudo apt upgrade
 ```
 
 ### Configure Software
@@ -37,11 +46,15 @@ This will turn off the GUI on next boot.  There are additional steps if you want
 
 1. Open terminal and run command to backup the configuration file:
 
-`sudo cp -n /etc/default/grub /etc/default/grub.backup`
+```
+sudo cp -n /etc/default/grub /etc/default/grub.backup
+```
 
 2. Edit the configuration file via command:
 
-`sudo gedit /etc/default/grub`
+```
+sudo gedit /etc/default/grub
+```
 
 When the file opens, do:
 
@@ -50,6 +63,32 @@ disable GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" by adding # at the beginning.
 set GRUB_CMDLINE_LINUX="" to GRUB_CMDLINE_LINUX="text"
 remove # from the line GRUB_TERMINAL="console" to disable graphical terminal.
 ```
+
+3. Save the file and apply changes by running command:
+
+```
+sudo update-grub
+```
+
+
+### Set Up SSH
+
+SSH is absolutely key to getting your mining setup operational.  Without SSH you will need to physically be next to the computer.  SSH allows remote access and management of your mining rig(s).
+
+SSH was already installed at the [Install Software](#Install Software) step above.  We just need to configure it.
+
+It will be running automatically after the installation.  However, you probably want to secure your mining rig(s) more than just using a password.  It is well worth while to set up a Private-Public key to secure your rig(s).  These steps are outlined below in more detail.
+
+**Create Private-Public Key**
+
+My personal choice is to create the private key on my own computer and then copy the public key component to the remote host (mining rig).  This ensures that the private key is secure and only located in one place.  I've written these instructions from a Ubuntu and Windows point of view.  There are tonnes of other guides out there for doing this, so this will be brief.
+
+__Ubuntu__
+
+```
+ssh-keygen
+```
+
 
 
 
