@@ -85,9 +85,28 @@ My personal choice is to create the private key on my own computer and then copy
 
 __Ubuntu__
 
+Make sure to not override any existing private key.  Rename the old private key before continuing.
+
 ```
 ssh-keygen
 ```
+
+You will be asked for a password.  It is recommended that you use a password.
+
+__Windows__
+
+Using puttygen.exe
+
+- Change the number of bits from 2048 to 4096
+- Click "Generate"
+- Give a description to the key
+- Save the Private Key
+- Save the Public Key
+- Create a separate text file with the Public Key in the 'Key' field.
+
+
+**Adding The Public Key to the Server**
+
 
 
 
