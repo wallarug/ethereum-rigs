@@ -139,6 +139,48 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 ```
 
+**Restart SSH**
+
+```
+sudo systemctl restart ssh
+```
+
+
+## NVIDIA Software
+
+The next very important step is to configure all the NVIDIA Software.  This includes the driver and CUDA.  Both are vital to the mining operation.
+
+The most reliable way to install the NVIDIA Driver is to download the Linux Run File from the NVIDIA Website.  This ensures you have the latest driver and will not run into any problems in the future.  The pre-built Ubuntu Driver tends to be older and can without reason stop working.
+
+Go to: https://www.nvidia.com/Download/index.aspx to find the driver on your computer (not the server, we disabled the GUI).
+
+Make sure to select the correct operation system and card type.  Click on "Search".  Then click "Download" next to the desired driver.
+
+The trick here is to now copy the link of the second "Download" button that appears.  Then we can use wget to download the file on the server.  
+
+```
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/460.67/NVIDIA-Linux-x86_64-460.67.run
+```
+
+After the download completes, change the permissions on it so that it can be executed.
+
+```
+sudo chmod 755 NVIDIA-Linux-x86_64-460.67.run
+```
+
+And then run the downloaded file.
+
+```
+sudo ./NVIDIA-Linux-x86_64-460.67.run
+```
+
+You will be presented with a number of prompts throughout the installation process.  A brief outline of these are below.
+
+- Continue
+- Continue
+- Only 64 Bit (No)
+
+
 
 
 
