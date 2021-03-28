@@ -150,6 +150,8 @@ sudo systemctl restart ssh
 
 The next very important step is to configure all the NVIDIA Software.  This includes the driver and CUDA.  Both are vital to the mining operation.
 
+### The Driver
+
 The most reliable way to install the NVIDIA Driver is to download the Linux Run File from the NVIDIA Website.  This ensures you have the latest driver and will not run into any problems in the future.  The pre-built Ubuntu Driver tends to be older and can without reason stop working.
 
 Go to: https://www.nvidia.com/Download/index.aspx to find the driver on your computer (not the server, we disabled the GUI).
@@ -180,54 +182,44 @@ You will be presented with a number of prompts throughout the installation proce
 - Continue
 - Only 64 Bit (No)
 
+After this, you should be able to check that the driver installed successfully by typing `nvidia-smi` and see all your GPUs listed.
 
 
+### CUDA
 
+Similarly to the NVIDIA Driver, it is recommended that you install the latest CUDA using the run file instead of the pre-built version through Ubuntu.
 
+Go to: https://developer.nvidia.com/cuda-downloads and select the below options:
 
+- Operating System: Ubuntu
+- Architecture: x86_64
+- Distribution: Ubuntu
+- Version: 20.04 
+- Installer Type: runfile(local)
 
-
-## Eth Mining Software Setup
-
-WIP
-
-## TODO
-
-* work out modding GPU speeds
-
-**Pre-req:**
-
-i.  Set up a wallet
-
-ii.  Choose a mining pool
-
-
-## Install NVIDIA Driver
-
-NOTE:  It appears that Ubuntu 20.04 automatically installs and configures the NVIDIA Driver (460.0) without any need to use the custom installer.  This is enabled when installing by ticking the 'install 3rd party drivers'.
-
-To update the driver:  `sudo apt install nvidia-driver-460`
-
-Option 2: Manual From Run File:
+Copy the wget command that appears below the options into the server.
 
 ```
-sudo apt install gcc make
+wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
 ```
 
-
-## Install CUDA 11.2+
-
-Option 1: Download the latest CUDA package from the NVIDIA website.  You may need to use a non-linux computer to get the link.  Then you can use wget to download the program.  Make sure to chmod 755 the CUDA run file.
-
-Option 2:  It appears that Ubuntu 20.04 can install the CUDA library from apt using the following command:  `sudo apt install nvidia-cuda-toolkit` without a need for the run file.  Note this will install the older version of CUDA (10.1) which may not be ideal for what is needed.
+Once the Download has completed, change the permissions so that the file can be executed and run it.
 
 ```
-sudo apt install gcc
+sudo chmod 755 cuda_11.2.2_460.32.03_linux.run
+sudo sh cuda_11.2.2_460.32.03_linux.run
 ```
 
-#### Post Install
+There will be some options that come up that can be customised.
 
-Add the cuda directory to path and Add the Library LD path to .bashrc
+- Install Driver: No
+
+The other options can be kept as default.
+
+
+### CUDA - post install
+
+Add the CUDA directory to path and Add the Library LD path to .bashrc
 
 ```
 ## For CUDA
@@ -237,13 +229,23 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2/lib
 ```
 
 
-## Download Eth Miner
+Once complete, you can test the install using `nvcc --version`
+
+
+That should be all for the NVIDIA Driver and CUDA set up.
+
+
+## Selecting a Miner!
+
+This is a step where you are open to options.  The miner you choose will depending on your setup and preferences.  The options are outlined below.
 
 * Claymore Duel Miner [here](https://github.com/Claymore-Dual/Claymore-Dual-Miner):  Has a 1% dev fee
 * Phoenix Miner [here](https://phoenixminer.org/):  Has a 0.65% dev fee
 * Ethminer [here](https://github.com/ethereum-mining/ethminer):  Has no dev fee
 
 Each needs their own configuration file and has their own setups.
+
+
 
 
 ## Configure Miner and Mine!
