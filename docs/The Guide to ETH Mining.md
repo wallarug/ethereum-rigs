@@ -280,7 +280,7 @@ Use TMUX
 ```
 sudo apt install tmux
 tmux
-Ctrl D then B
+Ctrl B then D
 ```
 
 ## Mods for Cards
