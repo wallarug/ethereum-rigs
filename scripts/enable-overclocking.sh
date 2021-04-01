@@ -1,1 +1,1 @@
-nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
+sudo nvidia-xconfig -a --cool-bits=31 --allow-empty-initial-configuration
