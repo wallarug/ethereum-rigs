@@ -12,7 +12,7 @@ done
 counter=0
 while [ $counter -le 14 ]
 do
-DISPLAY=:0 XAUTHORITY=/run/user/1000/gdm/Xauthority nvidia-settings -a [fan:$counter]/GPUTargetFanSpeed=90
+DISPLAY=:0 XAUTHORITY=/run/user/1000/gdm/Xauthority nvidia-settings -a [fan:$counter]/GPUTargetFanSpeed=75
 ((counter++))
 done
 
