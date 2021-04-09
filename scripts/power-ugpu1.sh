@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo nvidia-smi -pl 130
+sudo nvidia-smi -pl 120
 
 counter=0
 while [ $counter -le 5 ]
@@ -12,6 +12,6 @@ done
 counter=0
 while [ $counter -le 11 ]
 do
-DISPLAY=:0 XAUTHORITY=/run/user/1000/gdm/Xauthority nvidia-settings -a [fan:$counter]/GPUTargetFanSpeed=90
+DISPLAY=:0 XAUTHORITY=/run/user/1000/gdm/Xauthority nvidia-settings -a [fan:$counter]/GPUTargetFanSpeed=75
 ((counter++))
 done
