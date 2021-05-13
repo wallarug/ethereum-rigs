@@ -7,4 +7,12 @@ Scripts contain the basic commands to set up the rig for underclocking.
 
 ## Miners
 
+
 ## Usage  
+
+
+## Results
+TBD -     
+
+
+   
