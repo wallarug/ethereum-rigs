@@ -13,7 +13,7 @@ DISPLAY=:0 XAUTHORITY=un/user/1000/gdm/Xauthority nvidia-settings -a [gpu:$count
 done
 
 counter=0
-while [ $counter -le 7 ]
+while [ $counter -le 9 ]
 do
 DISPLAY=:0 XAUTHORITY=un/user/1000/gdm/Xauthority nvidia-settings -a [fan:$counter]/GPUTargetFanSpeed=75
 ((counter++))
