@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo nvidia-smi -pl 300
+sudo nvidia-smi -pl 380
 
 counter=0
 while [ $counter -le 7 ]
